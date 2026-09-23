@@ -20,7 +20,9 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(name: "CocoaLumberjack", url: "https://github.com/CocoaLumberjack/CocoaLumberjack.git", .upToNextMajor(from: "3.6.1")),
+        // Capped below 3.10.0: that release raises its own minimum to iOS 15, which this package
+        // (iOS 9) cannot satisfy. Raise the platforms above before widening this range.
+        .package(name: "CocoaLumberjack", url: "https://github.com/CocoaLumberjack/CocoaLumberjack.git", "3.6.1"..<"3.10.0"),
         .package(name: "CocoaAsyncSocket", url: "https://github.com/robbiehanson/CocoaAsyncSocket.git", .upToNextMajor(from: "7.6.4")),
         .package(name: "KissXML", url: "https://github.com/robbiehanson/KissXML.git", .upToNextMajor(from: "5.3.3")),
         .package(name: "libidn", url: "https://github.com/chrisballinger/libidn-framework.git", .upToNextMajor(from: "1.35.1"))
